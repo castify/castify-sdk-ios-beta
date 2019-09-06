@@ -27,12 +27,11 @@ extern "C" {
   
   typedef NS_ENUM(int32_t, CASError)
   {
-    CASError_None,
     CASError_Unknown,
     CASError_Runtime,
-    CASError_InvalidParameter,
-    CASError_InvalidOperation,
-    CASError_API,
+    CASError_Validation,
+    CASError_Defined,
+    CASError_Webhook,
   };
   
   void CASObject_Acquire(void *);
