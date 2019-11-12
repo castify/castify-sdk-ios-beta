@@ -36,41 +36,61 @@
 		<data>
 		Bhr7K+gKJeJtQEvwZiHPCpeKDuk=
 		</data>
+		<key>Modules/Castify.swiftmodule/arm.swiftinterface</key>
+		<data>
+		1L/5WCn3IQ0Yeo9cqJAWmtjAs+o=
+		</data>
 		<key>Modules/Castify.swiftmodule/arm.swiftmodule</key>
 		<data>
-		z1Q0cjxp+vj35heAv5jz/fRXdvQ=
+		mVM/bS4SheNdiwGw8o+LJE9l23M=
 		</data>
 		<key>Modules/Castify.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
 		PiOUPI+y3IU6nGwdcNKuNeGjJHw=
 		</data>
+		<key>Modules/Castify.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<data>
+		YiJlk0ltCXXTubWMLBfBtRg/M6k=
+		</data>
 		<key>Modules/Castify.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		gRf2GLCsaFOURADZ9trMwOhbfUU=
+		aoKWkVNZ/4feAJ+sJybSwiAOPNU=
 		</data>
 		<key>Modules/Castify.swiftmodule/arm64.swiftdoc</key>
 		<data>
 		PiOUPI+y3IU6nGwdcNKuNeGjJHw=
 		</data>
+		<key>Modules/Castify.swiftmodule/arm64.swiftinterface</key>
+		<data>
+		YiJlk0ltCXXTubWMLBfBtRg/M6k=
+		</data>
 		<key>Modules/Castify.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		gRf2GLCsaFOURADZ9trMwOhbfUU=
+		aoKWkVNZ/4feAJ+sJybSwiAOPNU=
 		</data>
 		<key>Modules/Castify.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<data>
 		Bhr7K+gKJeJtQEvwZiHPCpeKDuk=
 		</data>
+		<key>Modules/Castify.swiftmodule/armv7-apple-ios.swiftinterface</key>
+		<data>
+		1L/5WCn3IQ0Yeo9cqJAWmtjAs+o=
+		</data>
 		<key>Modules/Castify.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<data>
-		z1Q0cjxp+vj35heAv5jz/fRXdvQ=
+		mVM/bS4SheNdiwGw8o+LJE9l23M=
 		</data>
 		<key>Modules/Castify.swiftmodule/armv7.swiftdoc</key>
 		<data>
 		Bhr7K+gKJeJtQEvwZiHPCpeKDuk=
 		</data>
+		<key>Modules/Castify.swiftmodule/armv7.swiftinterface</key>
+		<data>
+		1L/5WCn3IQ0Yeo9cqJAWmtjAs+o=
+		</data>
 		<key>Modules/Castify.swiftmodule/armv7.swiftmodule</key>
 		<data>
-		z1Q0cjxp+vj35heAv5jz/fRXdvQ=
+		mVM/bS4SheNdiwGw8o+LJE9l23M=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -156,15 +176,26 @@
 			4e/WkatFTQrgDT5PuhOyxc/WbWddFSZL/9i3pB5fvks=
 			</data>
 		</dict>
+		<key>Modules/Castify.swiftmodule/arm.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1L/5WCn3IQ0Yeo9cqJAWmtjAs+o=
+			</data>
+			<key>hash2</key>
+			<data>
+			GL7iuT7ABVnFGCt3I8hTH/XDsQQ8feXY/VBKEvPJo04=
+			</data>
+		</dict>
 		<key>Modules/Castify.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			z1Q0cjxp+vj35heAv5jz/fRXdvQ=
+			mVM/bS4SheNdiwGw8o+LJE9l23M=
 			</data>
 			<key>hash2</key>
 			<data>
-			2L7+LrA5gaYx26F/V8G7zDPP33OONNzW2lWCinGi1fM=
+			K+L2/QpXXobTFrTlZ4vfx2KMT2kpb12aveqptCUOaLY=
 			</data>
 		</dict>
 		<key>Modules/Castify.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -178,15 +209,26 @@
 			oYq1ho+Pj1VAggTOAHlWcJ/1WAROWGR+r/Npl6JaGpw=
 			</data>
 		</dict>
+		<key>Modules/Castify.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YiJlk0ltCXXTubWMLBfBtRg/M6k=
+			</data>
+			<key>hash2</key>
+			<data>
+			faanH90om9Sb/yyLbTMa5tMva1WfJHc6pCpvDb9j3gY=
+			</data>
+		</dict>
 		<key>Modules/Castify.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gRf2GLCsaFOURADZ9trMwOhbfUU=
+			aoKWkVNZ/4feAJ+sJybSwiAOPNU=
 			</data>
 			<key>hash2</key>
 			<data>
-			AkynXZPJG+T0sDE4hkiiAiR3fGFd6vfOBWxybQXa0sM=
+			mGKG+icOhfGS5juNbea7Nld9nJWNq9x6+PPpqH/5m+0=
 			</data>
 		</dict>
 		<key>Modules/Castify.swiftmodule/arm64.swiftdoc</key>
@@ -200,15 +242,26 @@
 			oYq1ho+Pj1VAggTOAHlWcJ/1WAROWGR+r/Npl6JaGpw=
 			</data>
 		</dict>
+		<key>Modules/Castify.swiftmodule/arm64.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YiJlk0ltCXXTubWMLBfBtRg/M6k=
+			</data>
+			<key>hash2</key>
+			<data>
+			faanH90om9Sb/yyLbTMa5tMva1WfJHc6pCpvDb9j3gY=
+			</data>
+		</dict>
 		<key>Modules/Castify.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gRf2GLCsaFOURADZ9trMwOhbfUU=
+			aoKWkVNZ/4feAJ+sJybSwiAOPNU=
 			</data>
 			<key>hash2</key>
 			<data>
-			AkynXZPJG+T0sDE4hkiiAiR3fGFd6vfOBWxybQXa0sM=
+			mGKG+icOhfGS5juNbea7Nld9nJWNq9x6+PPpqH/5m+0=
 			</data>
 		</dict>
 		<key>Modules/Castify.swiftmodule/armv7-apple-ios.swiftdoc</key>
@@ -222,15 +275,26 @@
 			4e/WkatFTQrgDT5PuhOyxc/WbWddFSZL/9i3pB5fvks=
 			</data>
 		</dict>
+		<key>Modules/Castify.swiftmodule/armv7-apple-ios.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1L/5WCn3IQ0Yeo9cqJAWmtjAs+o=
+			</data>
+			<key>hash2</key>
+			<data>
+			GL7iuT7ABVnFGCt3I8hTH/XDsQQ8feXY/VBKEvPJo04=
+			</data>
+		</dict>
 		<key>Modules/Castify.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			z1Q0cjxp+vj35heAv5jz/fRXdvQ=
+			mVM/bS4SheNdiwGw8o+LJE9l23M=
 			</data>
 			<key>hash2</key>
 			<data>
-			2L7+LrA5gaYx26F/V8G7zDPP33OONNzW2lWCinGi1fM=
+			K+L2/QpXXobTFrTlZ4vfx2KMT2kpb12aveqptCUOaLY=
 			</data>
 		</dict>
 		<key>Modules/Castify.swiftmodule/armv7.swiftdoc</key>
@@ -244,15 +308,26 @@
 			4e/WkatFTQrgDT5PuhOyxc/WbWddFSZL/9i3pB5fvks=
 			</data>
 		</dict>
+		<key>Modules/Castify.swiftmodule/armv7.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1L/5WCn3IQ0Yeo9cqJAWmtjAs+o=
+			</data>
+			<key>hash2</key>
+			<data>
+			GL7iuT7ABVnFGCt3I8hTH/XDsQQ8feXY/VBKEvPJo04=
+			</data>
+		</dict>
 		<key>Modules/Castify.swiftmodule/armv7.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			z1Q0cjxp+vj35heAv5jz/fRXdvQ=
+			mVM/bS4SheNdiwGw8o+LJE9l23M=
 			</data>
 			<key>hash2</key>
 			<data>
-			2L7+LrA5gaYx26F/V8G7zDPP33OONNzW2lWCinGi1fM=
+			K+L2/QpXXobTFrTlZ4vfx2KMT2kpb12aveqptCUOaLY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
