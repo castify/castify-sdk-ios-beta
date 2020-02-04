@@ -28,7 +28,10 @@ extern "C" {
         CASError error;
       };
     };
-    const char *value;
+    union {
+      int64_t     time;
+      const char *value;
+    };
   } CASPlayerEvent;
   
   typedef struct
@@ -44,6 +47,8 @@ extern "C" {
   void CASPlayer_Play(CASPlayer, const char *broadcastId, double time);
   void CASPlayer_Stop(CASPlayer);
   
+  void CASPlayer_SetMediaSelector(CASPlayer, const char *);
+
   void CASPlayer_SetAudioEnabled(CASPlayer, bool);
   void CASPlayer_SetVideoEnabled(CASPlayer, bool);
   

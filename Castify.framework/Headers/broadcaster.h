@@ -41,7 +41,7 @@ extern "C" {
   void CASBroadcaster_SetVideoEncoderSetting(CASBroadcaster, const char *);
   void CASBroadcaster_SetAudioSource(CASBroadcaster, const char *);
   void CASBroadcaster_SetVideoSource(CASBroadcaster, const char *);
-  void CASBroadcaster_Start(CASBroadcaster);
+  void CASBroadcaster_Start(CASBroadcaster, const char *);
   void CASBroadcaster_Close(CASBroadcaster);
   
 #ifdef __cplusplus

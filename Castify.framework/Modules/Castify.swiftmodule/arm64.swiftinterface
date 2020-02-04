@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Castify
 import AVFoundation
 @_exported import Castify
@@ -24,6 +24,10 @@ import UIKit
     get
     set
   }
+  public var mediaSelector: Castify.MediaSelector {
+    get
+    set
+  }
   public init(_ app: Castify.CastifyApp, config: Castify.PlayerConfig = .init())
   @objc deinit
   public func play(broadcastId id: Swift.String, from time: Foundation.TimeInterval? = nil)
@@ -31,9 +35,14 @@ import UIKit
   @objc override dynamic public init()
 }
 public struct BroadcasterConfig : Swift.Codable {
-  public var customData: Swift.String
   public var autoReconnect: Swift.Bool
-  public init(customData: Swift.String = "", autoReconnect: Swift.Bool = true)
+  public init(autoReconnect: Swift.Bool = true)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct BroadcastRequest : Swift.Codable {
+  public var customData: Swift.String?
+  public init(customData: Swift.String? = nil)
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -215,6 +224,10 @@ public struct PlayerConfig {
   public var customData: Swift.String
   public init(key: Swift.String = "", customData: Swift.String = "")
 }
+public enum MediaSelector {
+  case auto
+  case name(Swift.String)
+}
 public class VideoPublisher {
   public init(_ app: Castify.CastifyApp)
   @objc deinit
@@ -305,7 +318,7 @@ public enum ResizeMode {
   }
   public init(_ app: Castify.CastifyApp, config: Castify.BroadcasterConfig = .init())
   @objc deinit
-  public func resume()
+  public func resume(request: Castify.BroadcastRequest = .init())
   public func pause()
   @objc override dynamic public init()
 }
