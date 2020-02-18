@@ -110,10 +110,6 @@ public class CastifyApp {
   public init(token secret: Swift.String, config: Castify.CastifyAppConfig = .production)
   @objc deinit
   public func publicPreviewURL(ofBroadcastId id: Swift.String, name: Swift.String = "index") -> Foundation.URL
-  public static var jitterBufferDisabled: Swift.Bool {
-    get
-    set
-  }
   public static var loggingOption: Castify.LoggingOption? {
     get
     set

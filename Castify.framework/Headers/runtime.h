@@ -42,9 +42,6 @@ extern "C" {
   CASRuntime CASRuntime_New(const char *token, const char *config);
   
   void CASDebug_SetLoggingOption(const char *loggingOption);
-  
-  void CASDebug_SetJitterBufferDisabled(bool);
-  bool CASDebug_GetJitterBufferDisabled();
 
 #ifdef __cplusplus
 }
