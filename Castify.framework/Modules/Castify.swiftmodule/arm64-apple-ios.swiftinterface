@@ -138,6 +138,10 @@ public struct LoggingOption : Swift.Codable {
     get
     set
   }
+  public var align: CoreGraphics.CGPoint {
+    get
+    set
+  }
   @objc override dynamic public func layoutSubviews()
   public func on(video sampleBuffer: CoreMedia.CMSampleBuffer)
   @objc deinit
@@ -353,5 +357,4 @@ extension Castify.LoggingOption.Level : Swift.Hashable {}
 extension Castify.LoggingOption.Level : Swift.RawRepresentable {}
 extension Castify.BroadcastStatus : Swift.Equatable {}
 extension Castify.BroadcastStatus : Swift.Hashable {}
-extension Castify.ResizeMode : Swift.Equatable {}
 extension Castify.ResizeMode : Swift.Hashable {}
