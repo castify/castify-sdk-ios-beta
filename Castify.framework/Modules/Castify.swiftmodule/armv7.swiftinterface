@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
 // swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Castify
 import AVFoundation
 @_exported import Castify
@@ -40,13 +40,11 @@ public struct BroadcasterConfig : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public struct BroadcastRequest : Swift.Codable {
-  public var customData: Swift.String?
-  public init(customData: Swift.String? = nil)
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
+public enum BroadcastRequest {
+  case new(customData: Swift.String? = nil)
+  case existing(broadcastId: Swift.String, token: Swift.String)
 }
-public class AudioOutput {
+@_hasMissingDesignatedInitializers public class AudioOutput {
   weak public var delegate: Castify.AudioOutputDelegate?
   @objc deinit
 }
@@ -57,7 +55,7 @@ public struct CastifyAppConfig : Swift.Codable {
   public var edgeAPI: Swift.String
   public var edgeCDN: Swift.String
   public static let production: Castify.CastifyAppConfig
-  public static func forDevelopment(namespace ns: Swift.String, secret: Swift.String) -> Castify.CastifyAppConfig
+  public static func forDevelopment(namespace ns: Swift.String) -> Castify.CastifyAppConfig
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -132,7 +130,7 @@ public struct LoggingOption : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-@objc public class PreviewView : UIKit.UIView, Castify.VideoOutputDelegate {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PreviewView : UIKit.UIView, Castify.VideoOutputDelegate {
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   public var resizeMode: Castify.ResizeMode {
     get
@@ -318,7 +316,7 @@ public enum ResizeMode {
   }
   public init(_ app: Castify.CastifyApp, config: Castify.BroadcasterConfig = .init())
   @objc deinit
-  public func resume(request: Castify.BroadcastRequest = .init())
+  public func resume(request: Castify.BroadcastRequest = .new())
   public func pause()
   @objc override dynamic public init()
 }
@@ -332,7 +330,7 @@ public struct Broadcast : Swift.Codable {
 public protocol AudioSource {
   var JSON: Any { get }
 }
-public class VideoOutput {
+@_hasMissingDesignatedInitializers public class VideoOutput {
   weak public var delegate: Castify.VideoOutputDelegate?
   @objc deinit
 }
@@ -357,4 +355,5 @@ extension Castify.LoggingOption.Level : Swift.Hashable {}
 extension Castify.LoggingOption.Level : Swift.RawRepresentable {}
 extension Castify.BroadcastStatus : Swift.Equatable {}
 extension Castify.BroadcastStatus : Swift.Hashable {}
+extension Castify.ResizeMode : Swift.Equatable {}
 extension Castify.ResizeMode : Swift.Hashable {}
