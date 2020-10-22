@@ -1,3 +1,3 @@
 # Castify SDK License
 
-Copyright (C) Evaluni, Inc.
+Copyright (C) Castify, Inc.
