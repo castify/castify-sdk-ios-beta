@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
     :tag => s.version.to_s 
   }
   s.homepage = 'https://castify.jp/'
-  s.vendored_frameworks = 'Castify.framework'
+  s.vendored_frameworks = 'Castify.xcframework'
   s.frameworks = [
     'AVFoundation', 
     'AudioToolBox',
