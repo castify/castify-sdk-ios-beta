@@ -13,6 +13,7 @@ extern "C" {
   typedef NS_ENUM(int32_t, CASPlayerEventType)
   {
     CASPlayerEventType_StateChange,
+    CASPlayerEventType_Timer,
     CASPlayerEventType_Audio,
     CASPlayerEventType_Video,
     CASPlayerEventType_Index,
@@ -41,12 +42,14 @@ extern "C" {
     void (*function)(void *userData, CASPlayerEvent);
   } CASPlayerCallback;
   
-  CASPlayer CASPlayer_New(CASRuntime, CASPlayerCallback
-                                  , const char *playbackKey
-                                  , const char *customData);
+  CASPlayer CASPlayer_New(CASRuntime, CASPlayerCallback);
+
+  void CASPlayer_SetUrl(CASPlayer, const char *);
+
+  void CASPlayer_SetPaused(CASPlayer, bool);
+  bool CASPlayer_GetPaused(CASPlayer);
   
-  void CASPlayer_Play(CASPlayer, const char *broadcastId, double time);
-  void CASPlayer_Stop(CASPlayer);
+  void CASPlayer_Seek(CASPlayer, double time);
   
   void CASPlayer_SetMediaSelector(CASPlayer, const char *);
 

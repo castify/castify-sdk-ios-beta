@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Castify
 import AVFoundation
 @_exported import Castify
@@ -27,10 +27,17 @@ import UIKit
     get
     set
   }
-  public init(_ app: Castify.CastifyApp, config: Castify.PlayerConfig = .init())
+  public init(_ app: Castify.CastifyApp)
   @objc deinit
-  public func play(broadcastId id: Swift.String, from time: Foundation.TimeInterval? = nil)
-  public func stop()
+  public var source: Castify.Source? {
+    get
+    set
+  }
+  public func seek(to time: Foundation.TimeInterval? = nil)
+  public var paused: Swift.Bool {
+    get
+    set
+  }
   @objc override dynamic public init()
 }
 public struct BroadcasterConfig : Swift.Codable {
@@ -104,7 +111,9 @@ extension Microphone : Castify.AudioSource {
   }
 }
 public class CastifyApp {
-  public init(token secret: Swift.String, config: Castify.CastifyAppConfig = .production)
+  final public let config: Castify.CastifyAppConfig
+  final public let token: Swift.String
+  public init(token: Swift.String, config: Castify.CastifyAppConfig = .production)
   @objc deinit
   public func publicPreviewURL(ofBroadcastId id: Swift.String, name: Swift.String = "index") -> Foundation.URL
   public static var loggingOption: Castify.LoggingOption? {
@@ -235,47 +244,31 @@ extension VideoPublisher : Castify.VideoSource {
     get
   }
 }
+public class Source {
+  public init(_ app: Castify.CastifyApp, broadcast id: Swift.String, options: Castify.PlayOptions = .init())
+  public func load(completion: @escaping (Swift.Result<Castify.SourceInfo, Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+public struct PlayOptions {
+  public var key: Swift.String?
+  public var val: Swift.String?
+  public var name: Swift.String?
+  public init(key: Swift.String? = UUID().uuidString, val: Swift.String? = nil, name: Swift.String? = nil)
+}
 public protocol PlayerDelegate : AnyObject {
   func on(event: Castify.PlayerEvent, from host: Castify.Player)
 }
 public enum PlayerEvent {
   case connectivityUpdated(state: Castify.Connectivity)
   case fatalError(cause: Castify.CastifyError?)
+  case timer(Foundation.TimeInterval)
 }
-extension CastifyApp {
-  @discardableResult
-  public func listBroadcasts(_ filter: Castify.BroadcastListFilter = .init(), completion fn: @escaping (Castify.Page<Castify.BroadcastInfo>, Swift.Error?) -> ()) -> Foundation.URLSessionTask
-}
-public struct Page<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
-  public var total: Swift.Int
-  public var values: [T]
-  public init()
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
-}
-public struct BroadcastInfo : Swift.Codable {
-  public var broadcastId: Swift.String
-  public var name: Swift.String?
-  public var link: Swift.String?
+public struct SourceInfo : Swift.Codable {
   public var startedAt: Swift.Int64
   public var stoppedAt: Swift.Int64?
-  public init(id: Swift.String)
+  public var mediaStart: Foundation.TimeInterval?
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-}
-public enum BroadcastStatus {
-  case inProgress
-  case finished
-  public static func == (a: Castify.BroadcastStatus, b: Castify.BroadcastStatus) -> Swift.Bool
-  public var hashValue: Swift.Int {
-    get
-  }
-  public func hash(into hasher: inout Swift.Hasher)
-}
-public struct BroadcastListFilter {
-  public var status: Castify.BroadcastStatus?
-  public var offset: Swift.Int
-  public init(status: Castify.BroadcastStatus? = nil, offset: Swift.Int = 0)
 }
 public enum ResizeMode {
   case cover
@@ -352,7 +345,5 @@ extension Castify.H264EncoderSetting.Profile : Swift.RawRepresentable {}
 extension Castify.LoggingOption.Level : Swift.Equatable {}
 extension Castify.LoggingOption.Level : Swift.Hashable {}
 extension Castify.LoggingOption.Level : Swift.RawRepresentable {}
-extension Castify.BroadcastStatus : Swift.Equatable {}
-extension Castify.BroadcastStatus : Swift.Hashable {}
 extension Castify.ResizeMode : Swift.Equatable {}
 extension Castify.ResizeMode : Swift.Hashable {}
