@@ -23,7 +23,7 @@ import UIKit
     get
     set
   }
-  public var mediaSelector: Castify.MediaSelector {
+  public var mediaSelector: Castify.MediaSelector? {
     get
     set
   }
