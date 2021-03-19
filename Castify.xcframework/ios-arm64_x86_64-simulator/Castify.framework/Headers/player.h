@@ -42,7 +42,7 @@ extern "C" {
     void (*function)(void *userData, CASPlayerEvent);
   } CASPlayerCallback;
   
-  CASPlayer CASPlayer_New(CASRuntime, CASPlayerCallback);
+  CASPlayer CASPlayer_New(CASRuntime, CASPlayerCallback, const char *config);
 
   void CASPlayer_SetUrl(CASPlayer, const char *);
 

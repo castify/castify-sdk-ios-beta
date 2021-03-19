@@ -9,9 +9,15 @@
 #include <stdint.h>
 
 #ifndef NS_ENUM
+#ifdef __cplusplus
+#define NS_ENUM(Int, Type) \
+void Type##_; \
+enum Type: Int
+#else
 #define NS_ENUM(Int, Type) \
 enum Type##_tag: Int Type; \
 enum Type##_tag: Int
+#endif
 #endif
 
 #ifdef __cplusplus
