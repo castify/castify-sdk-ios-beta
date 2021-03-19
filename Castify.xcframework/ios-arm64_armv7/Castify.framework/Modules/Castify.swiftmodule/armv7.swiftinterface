@@ -27,7 +27,7 @@ import UIKit
     get
     set
   }
-  public init(_ app: Castify.CastifyApp)
+  public init(_ app: Castify.CastifyApp, config: Castify.PlayerConfig = .init())
   @objc deinit
   public var source: Castify.Source? {
     get
@@ -225,10 +225,11 @@ extension AudioSource {
 public protocol VideoSource {
   var JSON: Any { get }
 }
-public struct PlayerConfig {
-  public var key: Swift.String
-  public var customData: Swift.String
-  public init(key: Swift.String = "", customData: Swift.String = "")
+public struct PlayerConfig : Swift.Codable {
+  public var lowLatency: Swift.Bool
+  public init(lowLatency: Swift.Bool = true)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 public enum MediaSelector {
   case auto
