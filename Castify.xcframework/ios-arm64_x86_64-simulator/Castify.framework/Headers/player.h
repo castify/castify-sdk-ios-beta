@@ -47,13 +47,15 @@ extern "C" {
   void CASPlayer_SetUrl(CASPlayer, const char *);
 
   void CASPlayer_SetPaused(CASPlayer, bool);
+
   bool CASPlayer_GetPaused(CASPlayer);
-  
+
   void CASPlayer_Seek(CASPlayer, double time);
-  
+
   void CASPlayer_SetMediaSelector(CASPlayer, const char *);
 
   void CASPlayer_SetAudioEnabled(CASPlayer, bool);
+
   void CASPlayer_SetVideoEnabled(CASPlayer, bool);
   
 #ifdef __cplusplus

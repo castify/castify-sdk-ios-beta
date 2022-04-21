@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
-// swift-module-flags: -target arm64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Castify
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Castify
 import AVFoundation
 @_exported import Castify
 import CoreGraphics
@@ -8,6 +8,7 @@ import CoreMedia
 import Foundation
 import Swift
 import UIKit
+import _Concurrency
 @objc public class Player : ObjectiveC.NSObject {
   weak public var delegate: Castify.PlayerDelegate?
   final public let audioOutput: Castify.AudioOutput
@@ -38,17 +39,17 @@ import UIKit
     get
     set
   }
-  @objc override dynamic public init()
 }
 public struct BroadcasterConfig : Swift.Codable {
   public var autoReconnect: Swift.Bool
   public init(autoReconnect: Swift.Bool = true)
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum BroadcastRequest {
   case new(customData: Swift.String? = nil)
   case existing(broadcastId: Swift.String, token: Swift.String)
+  case url(Swift.String)
 }
 @_hasMissingDesignatedInitializers public class AudioOutput {
   weak public var delegate: Castify.AudioOutputDelegate?
@@ -62,8 +63,8 @@ public struct CastifyAppConfig : Swift.Codable {
   public var edgeCDN: Swift.String
   public static let production: Castify.CastifyAppConfig
   public static func forDevelopment(namespace ns: Swift.String) -> Castify.CastifyAppConfig
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol AudioEncoderSetting {
   var JSON: Any { get }
@@ -85,8 +86,8 @@ public struct H264EncoderSetting : Castify.VideoEncoderSetting {
     case baseline
     case main
     case high
-    public typealias RawValue = Swift.Int32
     public init?(rawValue: Swift.Int32)
+    public typealias RawValue = Swift.Int32
     public var rawValue: Swift.Int32 {
       get
     }
@@ -105,7 +106,7 @@ public struct H264EncoderSetting : Castify.VideoEncoderSetting {
 public struct Microphone {
   public init()
 }
-extension Microphone : Castify.AudioSource {
+extension Castify.Microphone : Castify.AudioSource {
   public var JSON: Any {
     get
   }
@@ -127,29 +128,29 @@ public struct LoggingOption : Swift.Codable {
     case info
     case warn
     case error
-    public typealias RawValue = Swift.UInt
     public init?(rawValue: Swift.UInt)
+    public typealias RawValue = Swift.UInt
     public var rawValue: Swift.UInt {
       get
     }
   }
   public var level: Castify.LoggingOption.Level
   public init(level: Castify.LoggingOption.Level)
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PreviewView : UIKit.UIView, Castify.VideoOutputDelegate {
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  public var resizeMode: Castify.ResizeMode {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class PreviewView : UIKit.UIView, Castify.VideoOutputDelegate {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public var resizeMode: Castify.ResizeMode {
     get
     set
   }
-  public var align: CoreGraphics.CGPoint {
+  @_Concurrency.MainActor(unsafe) public var align: CoreGraphics.CGPoint {
     get
     set
   }
-  @objc override dynamic public func layoutSubviews()
-  public func on(video sampleBuffer: CoreMedia.CMSampleBuffer)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func on(video sampleBuffer: CoreMedia.CMSampleBuffer)
   @objc deinit
 }
 public enum Connectivity {
@@ -165,7 +166,7 @@ public struct Camera {
   public init(device: AVFoundation.AVCaptureDevice)
   public init?(position: AVFoundation.AVCaptureDevice.Position)
 }
-extension Camera : Castify.VideoSource {
+extension Castify.Camera : Castify.VideoSource {
   public var JSON: Any {
     get
   }
@@ -194,7 +195,7 @@ public struct AudioFile {
   public var path: Swift.String
   public init(path: Swift.String)
 }
-extension AudioFile : Castify.AudioSource {
+extension Castify.AudioFile : Castify.AudioSource {
   public var JSON: Any {
     get
   }
@@ -203,7 +204,7 @@ public struct AudioMixFilter<A, B> where A : Castify.AudioSource, B : Castify.Au
   public var _1: A
   public var _2: B
 }
-extension AudioMixFilter : Castify.AudioSource {
+extension Castify.AudioMixFilter : Castify.AudioSource {
   public var JSON: Any {
     get
   }
@@ -214,12 +215,12 @@ public struct AudioAmpFilter<Base> where Base : Castify.AudioSource {
   public var gain: Swift.Double
   public init(base: Base, gain: Swift.Double = 1.0)
 }
-extension AudioAmpFilter : Castify.AudioSource {
+extension Castify.AudioAmpFilter : Castify.AudioSource {
   public var JSON: Any {
     get
   }
 }
-extension AudioSource {
+extension Castify.AudioSource {
   public func with(gain: Swift.Double) -> Castify.AudioAmpFilter<Self>
 }
 public protocol VideoSource {
@@ -228,8 +229,8 @@ public protocol VideoSource {
 public struct PlayerConfig : Swift.Codable {
   public var lowLatency: Swift.Bool
   public init(lowLatency: Swift.Bool = true)
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum MediaSelector {
   case auto
@@ -240,7 +241,7 @@ public class VideoPublisher {
   @objc deinit
   public func publish(_ frame: CoreMedia.CMSampleBuffer)
 }
-extension VideoPublisher : Castify.VideoSource {
+extension Castify.VideoPublisher : Castify.VideoSource {
   public var JSON: Any {
     get
   }
@@ -268,18 +269,18 @@ public struct SourceInfo : Swift.Codable {
   public var startedAt: Swift.Int64
   public var stoppedAt: Swift.Int64?
   public var mediaStart: Foundation.TimeInterval?
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum ResizeMode {
   case cover
   case stretch
   case contain
   public static func == (a: Castify.ResizeMode, b: Castify.ResizeMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 @objc public class Broadcaster : ObjectiveC.NSObject {
   weak public var delegate: Castify.BroadcasterDelegate?
@@ -311,14 +312,13 @@ public enum ResizeMode {
   @objc deinit
   public func resume(request: Castify.BroadcastRequest = .new())
   public func pause()
-  @objc override dynamic public init()
 }
 public struct Broadcast : Swift.Codable {
   public var id: Swift.String
   public var token: Swift.String
   public init(id: Swift.String)
-  public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol AudioSource {
   var JSON: Any { get }
@@ -335,7 +335,7 @@ public class AudioPublisher {
   @objc deinit
   public func publish(_ frame: CoreMedia.CMSampleBuffer)
 }
-extension AudioPublisher : Castify.AudioSource {
+extension Castify.AudioPublisher : Castify.AudioSource {
   public var JSON: Any {
     get
   }
